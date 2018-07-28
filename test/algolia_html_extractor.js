@@ -352,68 +352,68 @@ describe('AlgoliaHTMLExtractor', function() {
     });
 
     it('should ignore the objectID key', function() {
-      // # Given
-      // input_a = { content: 'foo', objectID: 'AAA' }
-      // input_b = { content: 'foo', objectID: 'BBB' }
-      //
-      // # When
-      // actual_a = AlgoliaHTMLExtractor.uuid(input_a)
-      // actual_b = AlgoliaHTMLExtractor.uuid(input_b)
-      //
-      // # Then
-      // expect(actual_a).to eq(actual_b)
+      // Given
+      const inputA = { content: 'foo', objectID: 'AAA' };
+      const inputB = { content: 'foo', objectID: 'BBB' };
+
+      // When
+      const actualA = AlgoliaHTMLExtractor.uuid(inputA);
+      const actualB = AlgoliaHTMLExtractor.uuid(inputB);
+
+      // Then
+      expect(actualA).to.eq(actualB);
     });
 
     it('should give different uuid if different HTML tag', function() {
-      // # Given
-      // input_a = '<p>foo</p>'
-      // input_b = '<p class="bar">foo</p>'
-      //
-      // # When
-      // actual_a = AlgoliaHTMLExtractor.run(input_a)[0]
-      // actual_b = AlgoliaHTMLExtractor.run(input_b)[0]
-      //
-      // # Then
-      // expect(actual_a[:objectID]).not_to eq(actual_b[:objectID])
+      // Given
+      const inputA = '<p>foo</p>';
+      const inputB = '<p class="bar">foo</p>';
+
+      // When
+      const actualA = AlgoliaHTMLExtractor.run(inputA)[0];
+      const actualB = AlgoliaHTMLExtractor.run(inputB)[0];
+
+      // Then
+      expect(actualA.objectID).to.not.eq(actualB.objectID);
     });
 
     it('should give different uuid if different position in page', function() {
-      // # Given
-      // input_a = '<p>foo</p><p>bar</p>'
-      // input_b = '<p>foo</p><p>foo again</p><p>bar</p>'
-      //
-      // # When
-      // actual_a = AlgoliaHTMLExtractor.run(input_a)[1]
-      // actual_b = AlgoliaHTMLExtractor.run(input_b)[2]
-      //
-      // # Then
-      // expect(actual_a[:objectID]).not_to eq(actual_b[:objectID])
+      // Given
+      const inputA = '<p>foo</p><p>bar</p>';
+      const inputB = '<p>foo</p><p>foo again</p><p>bar</p>';
+
+      // When
+      const actualA = AlgoliaHTMLExtractor.run(inputA)[1];
+      const actualB = AlgoliaHTMLExtractor.run(inputB)[2];
+
+      // Then
+      expect(actualA.objectID).to.not.eq(actualB.objectID);
     });
 
     it('should give different uuid if different parent header', function() {
       // # Given
-      // input_a = '<h1 name="foo">foo</h1><p>bar</p>'
-      // input_b = '<h1 name="bar">bar</h1><p>bar</p>'
-      //
+      const inputA = '<h1 name="foo">foo</h1><p>bar</p>';
+      const inputB = '<h1 name="bar">bar</h1><p>bar</p>';
+
       // # When
-      // actual_a = AlgoliaHTMLExtractor.run(input_a)[0]
-      // actual_b = AlgoliaHTMLExtractor.run(input_b)[0]
-      //
+      const actualA = AlgoliaHTMLExtractor.run(inputA)[0];
+      const actualB = AlgoliaHTMLExtractor.run(inputB)[0];
+
       // # Then
-      // expect(actual_a[:objectID]).not_to eq(actual_b[:objectID])
+      expect(actualA.objectID).to.not.eq(actualB.objectID);
     });
 
     it('should always give the same uuid for the same content', function() {
       // # Given
-      // input_a = '<h1 name="foo">foo</h1><p>bar</p>'
-      // input_b = '<h1 name="foo">foo</h1><p>bar</p>'
-      //
+      const inputA = '<h1 name="foo">foo</h1><p>bar</p>';
+      const inputB = '<h1 name="foo">foo</h1><p>bar</p>';
+
       // # When
-      // actual_a = AlgoliaHTMLExtractor.run(input_a)[0]
-      // actual_b = AlgoliaHTMLExtractor.run(input_b)[0]
-      //
+      const actualA = AlgoliaHTMLExtractor.run(inputA)[0];
+      const actualB = AlgoliaHTMLExtractor.run(inputB)[0];
+
       // # Then
-      // expect(actual_a[:objectID]).to eq(actual_b[:objectID])
+      expect(actualA.objectID).to.eq(actualB.objectID);
     });
   });
 
