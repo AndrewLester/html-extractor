@@ -145,22 +145,22 @@ describe('AlgoliaHTMLExtractor', function() {
   describe('extract_headings', function() {
     it('should extract a simple hierarchy', function() {
       // # Given
-      // input = '<h1>Foo</h1>
-      //          <p>First paragraph</p>
-      //          <h2>Bar</h2>
-      //          <p>Second paragraph</p>
-      //          <h3>Baz</h3>
-      //          <p>Third paragraph</p>'
-      //
-      // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
-      // # Then
-      // expect(actual[0][:headings]).to eq ['Foo']
-      //
-      // expect(actual[1][:headings]).to eq %w[Foo Bar]
-      //
-      // expect(actual[2][:headings]).to eq %w[Foo Bar Baz]
+      input = `<h1>Foo</h1>
+               <p>First paragraph</p>
+               <h2>Bar</h2>
+               <p>Second paragraph</p>
+               <h3>Baz</h3>
+               <p>Third paragraph</p>`;
+
+      // When
+      actual = AlgoliaHTMLExtractor.run(input);
+
+      // Then
+      expect(actual[0].headings).to.have.members(['Foo']);
+
+      expect(actual[1].headings).to.have.members(['Foo', 'Bar']);
+
+      expect(actual[2].headings).to.have.members(['Foo', 'Bar', 'Baz']);
     });
 
     it('should have an empty array when no headings', function() {
