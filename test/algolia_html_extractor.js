@@ -74,13 +74,13 @@ describe('AlgoliaHTMLExtractor', function() {
   describe('extract_html', function() {
     it('should extract outer html', function() {
       // # Given
-      // input = '<p>foo</p>'
-      //
+      input = '<p>foo</p>';
+
       // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
+      actual = AlgoliaHTMLExtractor.run(input);
+
       // # Then
-      // expect(actual[0][:html]).to eq '<p>foo</p>'
+      expect(actual[0].html).to.eq('<p>foo</p>');
     });
 
     it('should trim content', function() {
