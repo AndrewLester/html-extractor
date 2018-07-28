@@ -33,26 +33,26 @@ describe('AlgoliaHTMLExtractor', function() {
       expect(actual.length).to.eq(1);
     });
 
-    it('should export the Nokogiri node', function() {
+    it('should export the jsdom node', function() {
       // # Given
-      // input = '<p>foo</p>'
-      //
+      input = '<p>foo</p>';
+
       // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
+      actual = AlgoliaHTMLExtractor.run(input);
+
       // # Then
-      // expect(actual[0][:node]).to be_an(Nokogiri::XML::Element)
+      expect(actual[0].node.tagName).to.equal('P');
     });
 
     it('should remove empty elements', function() {
-      // # Given
-      // input = '<p></p>'
-      //
-      // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
-      // # Then
-      // expect(actual.size).to eq 0
+      // Given
+      input = '<p></p>';
+
+      // When
+      actual = AlgoliaHTMLExtractor.run(input);
+
+      // Then
+      expect(actual.length).to.eq(0);
     });
 
     it('should add the DOM position to each element', function() {
