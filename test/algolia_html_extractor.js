@@ -83,16 +83,16 @@ describe('AlgoliaHTMLExtractor', function() {
       expect(actual[0].html).to.eq('<p>foo</p>');
     });
 
-    it('should trim content', function() {
+    it.only('should trim content', function() {
       // # Given
-      // input = '<p>foo</p>
-      //          <blink>irrelevant</blink>'
-      //
+      input = `<p>foo</p>
+               <blink>irrelevant</blink>`;
+
       // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
+      actual = AlgoliaHTMLExtractor.run(input);
+
       // # Then
-      // expect(actual[0][:html]).to eq '<p>foo</p>'
+      expect(actual[0].html).to.eq('<p>foo</p>');
     });
 
     it('should remove excluded tags', function() {
