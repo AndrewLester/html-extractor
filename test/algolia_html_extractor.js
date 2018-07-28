@@ -339,16 +339,16 @@ describe('AlgoliaHTMLExtractor', function() {
 
   describe('uuid', function() {
     it('should give different uuid if different content', function() {
-      // # Given
-      // input_a = { content: 'foo' }
-      // input_b = { content: 'bar' }
-      //
-      // # When
-      // actual_a = AlgoliaHTMLExtractor.uuid(input_a)
-      // actual_b = AlgoliaHTMLExtractor.uuid(input_b)
-      //
-      // # Then
-      // expect(actual_a).not_to eq(actual_b)
+      // Given
+      const inputA = { content: 'foo' };
+      const inputB = { content: 'bar' };
+
+      // When
+      const actualA = AlgoliaHTMLExtractor.uuid(inputA);
+      const actualB = AlgoliaHTMLExtractor.uuid(inputB);
+
+      // Then
+      expect(actualA).to.not.eq(actualB);
     });
 
     it('should ignore the objectID key', function() {
