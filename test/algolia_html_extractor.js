@@ -21,17 +21,16 @@ describe('AlgoliaHTMLExtractor', function() {
     });
 
     it('should allow overriding of the default css selector of nodes', function() {
-      // # Given
-      // input = '<div>foo</div>'
-      //
-      // # When
-      // options = {
-      //   css_selector: 'div'
-      // }
-      // actual = AlgoliaHTMLExtractor.run(input, options: options)
-      //
-      // # Then
-      // expect(actual.size).to eq 1
+      // Given
+      input = '<div>foo</div>';
+
+      // When
+      actual = AlgoliaHTMLExtractor.run(input, {
+        cssSelector: 'div',
+      });
+
+      // Then
+      expect(actual.length).to.eq(1);
     });
 
     it('should export the Nokogiri node', function() {
