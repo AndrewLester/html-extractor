@@ -56,18 +56,18 @@ describe('AlgoliaHTMLExtractor', function() {
     });
 
     it('should add the DOM position to each element', function() {
-      // # Given
-      // input = '<p>foo</p>
-      //          <p>bar</p>
-      //          <p>baz</p>'
-      //
-      // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
-      // # Then
-      // expect(actual[0][:custom_ranking][:position]).to eq 0
-      // expect(actual[1][:custom_ranking][:position]).to eq 1
-      // expect(actual[2][:custom_ranking][:position]).to eq 2
+      // Given
+      input = `<p>foo</p>
+               <p>bar</p>
+               <p>baz</p>`;
+
+      // When
+      actual = AlgoliaHTMLExtractor.run(input);
+
+      // Then
+      expect(actual[0].customRanking.position).to.eq(0);
+      expect(actual[1].customRanking.position).to.eq(1);
+      expect(actual[2].customRanking.position).to.eq(2);
     });
   });
 
