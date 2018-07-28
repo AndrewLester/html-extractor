@@ -1,16 +1,23 @@
-// require 'spec_helper'
+const { expect } = require('chai');
+
+const AlgoliaHtmlExtractor = require('../');
+
+const AlgoliaHTMLExtractor = new AlgoliaHtmlExtractor();
+
+let input;
+let actual;
 
 describe('AlgoliaHTMLExtractor', function() {
   describe('.run', function() {
     it('should load from an HTML string', function() {
-      // # Given
-      // input = '<p>foo</p>'
-      //
-      // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
-      // # Then
-      // expect(actual.size).to eq 1
+      // Given
+      input = '<p>foo</p>';
+
+      // When
+      actual = AlgoliaHTMLExtractor.run(input);
+
+      // Then
+      expect(actual.length).to.eq(1);
     });
 
     it('should allow overriding of the default css selector of nodes', function() {

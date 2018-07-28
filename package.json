@@ -7,7 +7,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "test-watch": "npm test -- -w"
   },
   "repository": {
     "type": "git",
@@ -21,10 +22,14 @@
   },
   "homepage": "https://github.com/stonecircle/html-extractor#readme",
   "devDependencies": {
+    "chai": "^4.1.2",
     "eslint": "^5.2.0",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-import": "^2.13.0",
     "mocha": "^5.2.0",
     "np": "^3.0.4"
+  },
+  "dependencies": {
+    "jsdom": "^11.12.0"
   }
 }
