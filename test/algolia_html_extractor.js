@@ -231,15 +231,15 @@ describe('AlgoliaHTMLExtractor', function() {
 
   describe('extract_anchor', function() {
     it('should get the anchor of parent', function() {
-      // # Given
-      // input = '<h1 name="anchor">Foo</h1>
-      //          <p>First paragraph</p>'
-      //
-      // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
-      // # Then
-      // expect(actual[0][:anchor]).to eq 'anchor'
+      // Given
+      input = `<h1 name="anchor">Foo</h1>
+               <p>First paragraph</p>`;
+
+      // When
+      actual = AlgoliaHTMLExtractor.run(input);
+
+      // Then
+      expect(actual[0].anchor).to.eq('anchor');
     });
 
     it('should get no anchor if none found', function() {
