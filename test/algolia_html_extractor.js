@@ -176,14 +176,14 @@ describe('AlgoliaHTMLExtractor', function() {
 
     it('should use inner text of headings', function() {
       // # Given
-      // input = '<h1><a href="#">Foo</a><span></span></h1>
-      //          <p>First paragraph</p>'
-      //
+      input = `<h1><a href="#">Foo</a><span></span></h1>
+               <p>First paragraph</p>`;
+
       // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
+      actual = AlgoliaHTMLExtractor.run(input);
+
       // # Then
-      // expect(actual[0][:headings]).to eq ['Foo']
+      expect(actual[0].headings).to.have.members(['Foo']);
     });
 
     it('should handle nodes not in any hierarchy', function() {
