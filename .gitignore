@@ -1,13 +1,2 @@
-Gemfile.lock
-coverage/
-
-
 .DS_Store
-.*.sw[a-z]
-Thumbs.db
-nohup.out
-tmp
-*~
-*.crcdownload
-*.orig
-
+node_modules

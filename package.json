@@ -1,0 +1,30 @@
+{
+  "name": "html-extractor-node",
+  "version": "1.0.0",
+  "description": "algolia html-extractor for NodeJS",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stonecircle/html-extractor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stonecircle/html-extractor/issues"
+  },
+  "homepage": "https://github.com/stonecircle/html-extractor#readme",
+  "devDependencies": {
+    "eslint": "^5.2.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "mocha": "^5.2.0",
+    "np": "^3.0.4"
+  }
+}
