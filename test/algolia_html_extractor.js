@@ -243,85 +243,85 @@ describe('AlgoliaHTMLExtractor', function() {
     });
 
     it('should get no anchor if none found', function() {
-      // # Given
-      // input = '<h1>Foo</h1>
-      //          <p>First paragraph</p>'
-      //
-      // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
-      // # Then
-      // expect(actual[0][:anchor]).to eq nil
+      // Given
+      input = `<h1>Foo</h1>
+               <p>First paragraph</p>`;
+
+      // When
+      actual = AlgoliaHTMLExtractor.run(input);
+
+      // Then
+      expect(actual[0].anchor).to.eq(null);
     });
 
     it('should use the id as anchor if no name set', function() {
-      // # Given
-      // input = '<h1 id="anchor">Foo</h1>
-      //          <p>First paragraph</p>'
-      //
-      // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
-      // # Then
-      // expect(actual[0][:anchor]).to eq 'anchor'
+      // Given
+      input = `<h1 id="anchor">Foo</h1>
+               <p>First paragraph</p>`;
+
+      // When
+      actual = AlgoliaHTMLExtractor.run(input);
+
+      // Then
+      expect(actual[0].anchor).to.eq('anchor');
     });
 
     it('should be set to nil if no name nor id', function() {
-      // # Given
-      // input = '<h1>Foo</h1>
-      //          <p>First paragraph</p>'
-      //
-      // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
-      // # Then
-      // expect(actual[0][:anchor]).to eq nil
+      // Given
+      input = `<h1>Foo</h1>
+               <p>First paragraph</p>`;
+
+      // When
+      actual = AlgoliaHTMLExtractor.run(input);
+
+      // Then
+      expect(actual[0].anchor).to.eq(null);
     });
 
     it('should get the anchor of closest parent with an anchor', function() {
-      // # Given
-      // input = '<h1 name="anchor">Foo</h1>
-      //          <p>First paragraph</p>
-      //          <h2>Bar</h2>
-      //          <p>Second paragraph</p>
-      //          <h3 name="subanchor">Baz</h3>
-      //          <p>Third paragraph</p>'
-      //
-      // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
-      // # Then
-      // expect(actual[0][:anchor]).to eq 'anchor'
-      // expect(actual[1][:anchor]).to eq 'anchor'
-      // expect(actual[2][:anchor]).to eq 'subanchor'
+      // Given
+      input = `<h1 name="anchor">Foo</h1>
+               <p>First paragraph</p>
+               <h2>Bar</h2>
+               <p>Second paragraph</p>
+               <h3 name="subanchor">Baz</h3>
+               <p>Third paragraph</p>`;
+
+      // When
+      actual = AlgoliaHTMLExtractor.run(input);
+
+      // Then
+      expect(actual[0].anchor).to.eq('anchor');
+      expect(actual[1].anchor).to.eq('anchor');
+      expect(actual[2].anchor).to.eq('subanchor');
     });
 
     it('should get anchor even if heading not a direct parent', function() {
-      // # Given
-      // input = '<header>
-      //            <h1 name="anchor">Foo</h1>
-      //            <p>First paragraph</p>
-      //          </header>
-      //          <div>
-      //            <div>
-      //              <div>
-      //                <h2>Bar</h2>
-      //                <p>Second paragraph</p>
-      //              </div>
-      //            </div>
-      //            <div>
-      //              <h3 name="subanchor">Baz</h3>
-      //              <p>Third paragraph</p>
-      //            </div>
-      //          </div>'
-      //
-      // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
-      // # Then
-      // expect(actual[0][:anchor]).to eq 'anchor'
-      // expect(actual[1][:anchor]).to eq 'anchor'
-      // expect(actual[2][:anchor]).to eq 'subanchor'
+      // Given
+      input = `<header>
+                 <h1 name="anchor">Foo</h1>
+                 <p>First paragraph</p>
+               </header>
+               <div>
+                 <div>
+                   <div>
+                     <h2>Bar</h2>
+                     <p>Second paragraph</p>
+                   </div>
+                 </div>
+                 <div>
+                   <h3 name="subanchor">Baz</h3>
+                   <p>Third paragraph</p>
+                 </div>
+               </div>`;
+
+      // When
+      actual = AlgoliaHTMLExtractor.run(input);
+
+      // Then
+      expect(actual[0].anchor).to.eq('anchor');
+      expect(actual[1].anchor).to.eq('anchor');
+      expect(actual[2].anchor).to.eq('subanchor');
     });
 
     it('should get anchor if not directly on the header but inner element', function() {
