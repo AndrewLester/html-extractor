@@ -1,10 +1,10 @@
-require 'spec_helper'
+// require 'spec_helper'
 
-# rubocop:disable Metrics/BlockLength
-describe(AlgoliaHTMLExtractor) do
-  let(:current) { AlgoliaHTMLExtractor }
-  describe '.run' do
-    it 'should load from an HTML string' do
+describe('AlgoliaHTMLExtractor', function() {
+
+  describe('.run', function() {
+
+    it('should load from an HTML string', function() {
       # Given
       input = '<p>foo</p>'
 
@@ -13,9 +13,9 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual.size).to eq 1
-    end
+    }
 
-    it 'should allow overriding of the default css selector of nodes' do
+    it('should allow overriding of the default css selector of nodes', function() {
       # Given
       input = '<div>foo</div>'
 
@@ -27,9 +27,9 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual.size).to eq 1
-    end
+    }
 
-    it 'should export the Nokogiri node' do
+    it('should export the Nokogiri node', function() {
       # Given
       input = '<p>foo</p>'
 
@@ -38,9 +38,9 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual[0][:node]).to be_an(Nokogiri::XML::Element)
-    end
+    }
 
-    it 'should remove empty elements' do
+    it('should remove empty elements', function() {
       # Given
       input = '<p></p>'
 
@@ -49,9 +49,9 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual.size).to eq 0
-    end
+    }
 
-    it 'should add the DOM position to each element' do
+    it('should add the DOM position to each element', function() {
       # Given
       input = '<p>foo</p>
                <p>bar</p>
@@ -64,11 +64,11 @@ describe(AlgoliaHTMLExtractor) do
       expect(actual[0][:custom_ranking][:position]).to eq 0
       expect(actual[1][:custom_ranking][:position]).to eq 1
       expect(actual[2][:custom_ranking][:position]).to eq 2
-    end
-  end
+    }
+  }
 
-  describe 'extract_html' do
-    it 'should extract outer html' do
+  describe('extract_html', function() {
+    it('should extract outer html', function() {
       # Given
       input = '<p>foo</p>'
 
@@ -77,9 +77,9 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual[0][:html]).to eq '<p>foo</p>'
-    end
+    }
 
-    it 'should trim content' do
+    it('should trim content', function() {
       # Given
       input = '<p>foo</p>
                <blink>irrelevant</blink>'
@@ -89,9 +89,9 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual[0][:html]).to eq '<p>foo</p>'
-    end
+    }
 
-    it 'should remove excluded tags' do
+    it('should remove excluded tags', function() {
       # Given
       input = '<p>foo<script src="evil.com" /></p>'
 
@@ -103,11 +103,11 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual[0][:html]).to eq '<p>foo</p>'
-    end
-  end
+    }
+  }
 
-  describe 'extract_text' do
-    it 'should extract inner text' do
+  describe('extract_text', function() {
+    it('should extract inner text', function() {
       # Given
       input = '<p>foo</p>'
 
@@ -116,9 +116,9 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual[0][:content]).to eq 'foo'
-    end
+    }
 
-    it 'should extract UTF8 correctly' do
+    it('should extract UTF8 correctly', function() {
       # Given
       input = '<p>UTF8‽✗✓</p>'
 
@@ -127,19 +127,19 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual[0][:content]).to eq 'UTF8‽✗✓'
-    end
-  end
+    }
+  }
 
-  describe 'extract_tag_name' do
+  describe('extract_tag_name', function() {
     subject { current.extract_tag_name(node) }
     describe do
       let(:node) { double('Node', name: 'P') }
       it { should eq 'p' }
-    end
-  end
+    }
+  }
 
-  describe 'extract_headings' do
-    it 'should extract a simple hierarchy' do
+  describe('extract_headings', function() {
+    it('should extract a simple hierarchy', function() {
       # Given
       input = '<h1>Foo</h1>
                <p>First paragraph</p>
@@ -157,9 +157,9 @@ describe(AlgoliaHTMLExtractor) do
       expect(actual[1][:headings]).to eq %w[Foo Bar]
 
       expect(actual[2][:headings]).to eq %w[Foo Bar Baz]
-    end
+    }
 
-    it 'should have an empty array when no headings' do
+    it('should have an empty array when no headings', function() {
       # Given
       input = '<p>First paragraph</p>'
 
@@ -168,9 +168,9 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual[0][:headings]).to eq []
-    end
+    }
 
-    it 'should use inner text of headings' do
+    it('should use inner text of headings', function() {
       # Given
       input = '<h1><a href="#">Foo</a><span></span></h1>
                <p>First paragraph</p>'
@@ -180,9 +180,9 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual[0][:headings]).to eq ['Foo']
-    end
+    }
 
-    it 'should handle nodes not in any hierarchy' do
+    it('should handle nodes not in any hierarchy', function() {
       # Given
       input = '<p>First paragraph</p>
                <h1>Foo</h1>'
@@ -192,9 +192,9 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual[0][:headings]).to eq []
-    end
+    }
 
-    it 'should handle any number of wrappers' do
+    it('should handle any number of wrappers', function() {
       # Given
       input = '<header>
                  <h1>Foo</h1>
@@ -222,11 +222,11 @@ describe(AlgoliaHTMLExtractor) do
       expect(actual[1][:headings]).to eq %w[Foo Bar]
 
       expect(actual[2][:headings]).to eq %w[Foo Bar Baz]
-    end
-  end
+    }
+  }
 
-  describe 'extract_anchor' do
-    it 'should get the anchor of parent' do
+  describe('extract_anchor', function() {
+    it('should get the anchor of parent', function() {
       # Given
       input = '<h1 name="anchor">Foo</h1>
                <p>First paragraph</p>'
@@ -236,9 +236,9 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual[0][:anchor]).to eq 'anchor'
-    end
+    }
 
-    it 'should get no anchor if none found' do
+    it('should get no anchor if none found', function() {
       # Given
       input = '<h1>Foo</h1>
                <p>First paragraph</p>'
@@ -248,9 +248,9 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual[0][:anchor]).to eq nil
-    end
+    }
 
-    it 'should use the id as anchor if no name set' do
+    it('should use the id as anchor if no name set', function() {
       # Given
       input = '<h1 id="anchor">Foo</h1>
                <p>First paragraph</p>'
@@ -260,9 +260,9 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual[0][:anchor]).to eq 'anchor'
-    end
+    }
 
-    it 'should be set to nil if no name nor id' do
+    it('should be set to nil if no name nor id', function() {
       # Given
       input = '<h1>Foo</h1>
                <p>First paragraph</p>'
@@ -272,9 +272,9 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual[0][:anchor]).to eq nil
-    end
+    }
 
-    it 'should get the anchor of closest parent with an anchor' do
+    it('should get the anchor of closest parent with an anchor', function() {
       # Given
       input = '<h1 name="anchor">Foo</h1>
                <p>First paragraph</p>
@@ -290,9 +290,9 @@ describe(AlgoliaHTMLExtractor) do
       expect(actual[0][:anchor]).to eq 'anchor'
       expect(actual[1][:anchor]).to eq 'anchor'
       expect(actual[2][:anchor]).to eq 'subanchor'
-    end
+    }
 
-    it 'should get anchor even if heading not a direct parent' do
+    it('should get anchor even if heading not a direct parent', function() {
       # Given
       input = '<header>
                  <h1 name="anchor">Foo</h1>
@@ -318,9 +318,9 @@ describe(AlgoliaHTMLExtractor) do
       expect(actual[0][:anchor]).to eq 'anchor'
       expect(actual[1][:anchor]).to eq 'anchor'
       expect(actual[2][:anchor]).to eq 'subanchor'
-    end
+    }
 
-    it 'should get anchor if not directly on the header but inner element' do
+    it('should get anchor if not directly on the header but inner element', function() {
       # Given
       input = '<h1><a name="anchor">Foo</a></h1>
                <p>First paragraph</p>'
@@ -330,11 +330,11 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual[0][:anchor]).to eq 'anchor'
-    end
-  end
+    }
+  }
 
-  describe 'uuid' do
-    it 'should give different uuid if different content' do
+  describe('uuid', function() {
+    it('should give different uuid if different content', function() {
       # Given
       input_a = { content: 'foo' }
       input_b = { content: 'bar' }
@@ -345,9 +345,9 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual_a).not_to eq(actual_b)
-    end
+    }
 
-    it 'should ignore the objectID key' do
+    it('should ignore the objectID key', function() {
       # Given
       input_a = { content: 'foo', objectID: 'AAA' }
       input_b = { content: 'foo', objectID: 'BBB' }
@@ -358,9 +358,9 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual_a).to eq(actual_b)
-    end
+    }
 
-    it 'should give different uuid if different HTML tag' do
+    it('should give different uuid if different HTML tag', function() {
       # Given
       input_a = '<p>foo</p>'
       input_b = '<p class="bar">foo</p>'
@@ -371,9 +371,9 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual_a[:objectID]).not_to eq(actual_b[:objectID])
-    end
+    }
 
-    it 'should give different uuid if different position in page' do
+    it('should give different uuid if different position in page', function() {
       # Given
       input_a = '<p>foo</p><p>bar</p>'
       input_b = '<p>foo</p><p>foo again</p><p>bar</p>'
@@ -384,9 +384,9 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual_a[:objectID]).not_to eq(actual_b[:objectID])
-    end
+    }
 
-    it 'should give different uuid if different parent header' do
+    it('should give different uuid if different parent header', function() {
       # Given
       input_a = '<h1 name="foo">foo</h1><p>bar</p>'
       input_b = '<h1 name="bar">bar</h1><p>bar</p>'
@@ -397,9 +397,9 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual_a[:objectID]).not_to eq(actual_b[:objectID])
-    end
+    }
 
-    it 'should always give the same uuid for the same content' do
+    it('should always give the same uuid for the same content', function() {
       # Given
       input_a = '<h1 name="foo">foo</h1><p>bar</p>'
       input_b = '<h1 name="foo">foo</h1><p>bar</p>'
@@ -410,11 +410,11 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual_a[:objectID]).to eq(actual_b[:objectID])
-    end
-  end
+    }
+  }
 
-  describe 'heading_weight' do
-    it 'should have 100 if no heading' do
+  describe('heading_weight', function() {
+    it('should have 100 if no heading', function() {
       # Given
       input = '<p>foo</p>'
 
@@ -423,9 +423,9 @@ describe(AlgoliaHTMLExtractor) do
 
       # Then
       expect(actual[0][:custom_ranking][:heading]).to eq 100
-    end
+    }
 
-    it 'should have decreasing value under small headers' do
+    it('should have decreasing value under small headers', function() {
       # Given
       input = '<h1 name="one">bar</h1><p>foo</p>
                <h2 name="two">bar</h2><p>foo</p>
@@ -444,7 +444,6 @@ describe(AlgoliaHTMLExtractor) do
       expect(actual[3][:custom_ranking][:heading]).to eq 60
       expect(actual[4][:custom_ranking][:heading]).to eq 50
       expect(actual[5][:custom_ranking][:heading]).to eq 40
-    end
-  end
-end
-# rubocop:enable Metrics/BlockLength
+    }
+  }
+}
