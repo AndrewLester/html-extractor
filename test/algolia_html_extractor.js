@@ -111,35 +111,36 @@ describe('AlgoliaHTMLExtractor', function() {
 
   describe('extract_text', function() {
     it('should extract inner text', function() {
-      // # Given
-      // input = '<p>foo</p>'
-      //
-      // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
-      // # Then
-      // expect(actual[0][:content]).to eq 'foo'
+      // Given
+      input = '<p>foo</p>';
+
+      // When
+      actual = AlgoliaHTMLExtractor.run(input);
+
+      // Then
+      expect(actual[0].content).to.eq('foo');
     });
 
     it('should extract UTF8 correctly', function() {
-      // # Given
-      // input = '<p>UTF8‽✗✓</p>'
-      //
-      // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
-      // # Then
-      // expect(actual[0][:content]).to eq 'UTF8‽✗✓'
+      // Given
+      input = '<p>UTF8‽✗✓</p>';
+
+      // When
+      actual = AlgoliaHTMLExtractor.run(input);
+
+      // Then
+      expect(actual[0].content).to.eq('UTF8‽✗✓');
     });
   });
 
-  describe('extract_tag_name', function() {
-    // subject { current.extract_tag_name(node) }
-    // describe do
-    //   let(:node) { double('Node', name: 'P') }
-    //   it { should eq 'p' }
-    // }
-  });
+  // TODO: re-implement this test
+  // describe('extract_tag_name', function() {
+  //   // subject { current.extract_tag_name(node) }
+  //   // describe do
+  //   //   let(:node) { double('Node', name: 'P') }
+  //   //   it { should eq 'p' }
+  //   // }
+  // });
 
   describe('extract_headings', function() {
     it('should extract a simple hierarchy', function() {
