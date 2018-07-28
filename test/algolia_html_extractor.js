@@ -325,15 +325,15 @@ describe('AlgoliaHTMLExtractor', function() {
     });
 
     it('should get anchor if not directly on the header but inner element', function() {
-      // # Given
-      // input = '<h1><a name="anchor">Foo</a></h1>
-      //          <p>First paragraph</p>'
-      //
-      // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
-      // # Then
-      // expect(actual[0][:anchor]).to eq 'anchor'
+      // Given
+      input = `<h1><a name="anchor">Foo</a></h1>
+               <p>First paragraph</p>`;
+
+      // When
+      actual = AlgoliaHTMLExtractor.run(input);
+
+      // Then
+      expect(actual[0].anchor).to.eq('anchor');
     });
   });
 
