@@ -175,57 +175,57 @@ describe('AlgoliaHTMLExtractor', function() {
     });
 
     it('should use inner text of headings', function() {
-      // # Given
+      // Given
       input = `<h1><a href="#">Foo</a><span></span></h1>
                <p>First paragraph</p>`;
 
-      // # When
+      // When
       actual = AlgoliaHTMLExtractor.run(input);
 
-      // # Then
+      // Then
       expect(actual[0].headings).to.have.members(['Foo']);
     });
 
     it('should handle nodes not in any hierarchy', function() {
-      // # Given
-      // input = '<p>First paragraph</p>
-      //          <h1>Foo</h1>'
-      //
-      // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
-      // # Then
-      // expect(actual[0][:headings]).to eq []
+      // Given
+      input = `<p>First paragraph</p>
+               <h1>Foo</h1>`;
+
+      // When
+      actual = AlgoliaHTMLExtractor.run(input);
+
+      // Then
+      expect(actual[0].headings).to.be.empty;
     });
 
     it('should handle any number of wrappers', function() {
-      // # Given
-      // input = '<header>
-      //            <h1>Foo</h1>
-      //            <p>First paragraph</p>
-      //          </header>
-      //          <div>
-      //            <div>
-      //              <div>
-      //                <h2>Bar</h2>
-      //                <p>Second paragraph</p>
-      //                </div>
-      //              </div>
-      //            <div>
-      //              <h3>Baz</h3>
-      //              <p>Third paragraph</p>
-      //            </div>
-      //          </div>'
-      //
-      // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
-      // # Then
-      // expect(actual[0][:headings]).to eq ['Foo']
-      //
-      // expect(actual[1][:headings]).to eq %w[Foo Bar]
-      //
-      // expect(actual[2][:headings]).to eq %w[Foo Bar Baz]
+      // Given
+      input = `<header>
+                 <h1>Foo</h1>
+                 <p>First paragraph</p>
+               </header>
+               <div>
+                 <div>
+                   <div>
+                     <h2>Bar</h2>
+                     <p>Second paragraph</p>
+                     </div>
+                   </div>
+                 <div>
+                   <h3>Baz</h3>
+                   <p>Third paragraph</p>
+                 </div>
+               </div>`;
+
+      // When
+      actual = AlgoliaHTMLExtractor.run(input);
+
+      // Then
+      expect(actual[0].headings).to.have.members(['Foo']);
+
+      expect(actual[1].headings).to.have.members(['Foo', 'Bar']);
+
+      expect(actual[2].headings).to.have.members(['Foo', 'Bar', 'Baz']);
     });
   });
 
