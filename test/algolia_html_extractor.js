@@ -164,14 +164,14 @@ describe('AlgoliaHTMLExtractor', function() {
     });
 
     it('should have an empty array when no headings', function() {
-      // # Given
-      // input = '<p>First paragraph</p>'
-      //
-      // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
-      // # Then
-      // expect(actual[0][:headings]).to eq []
+      // Given
+      input = '<p>First paragraph</p>';
+
+      // When
+      actual = AlgoliaHTMLExtractor.run(input);
+
+      // Then
+      expect(actual[0].headings).to.be.empty;
     });
 
     it('should use inner text of headings', function() {
