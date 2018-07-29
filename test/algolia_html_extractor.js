@@ -430,24 +430,24 @@ describe('AlgoliaHTMLExtractor', function() {
     });
 
     it('should have decreasing value under small headers', function() {
-      // # Given
-      // input = '<h1 name="one">bar</h1><p>foo</p>
-      //          <h2 name="two">bar</h2><p>foo</p>
-      //          <h3 name="three">bar</h3><p>foo</p>
-      //          <h4 name="four">bar</h4><p>foo</p>
-      //          <h5 name="five">bar</h5><p>foo</p>
-      //          <h6 name="six">bar</h6><p>foo</p>'
-      //
-      // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
-      // # Then
-      // expect(actual[0][:custom_ranking][:heading]).to eq 90
-      // expect(actual[1][:custom_ranking][:heading]).to eq 80
-      // expect(actual[2][:custom_ranking][:heading]).to eq 70
-      // expect(actual[3][:custom_ranking][:heading]).to eq 60
-      // expect(actual[4][:custom_ranking][:heading]).to eq 50
-      // expect(actual[5][:custom_ranking][:heading]).to eq 40
+      // Given
+      input = `<h1 name="one">bar</h1><p>foo</p>
+               <h2 name="two">bar</h2><p>foo</p>
+               <h3 name="three">bar</h3><p>foo</p>
+               <h4 name="four">bar</h4><p>foo</p>
+               <h5 name="five">bar</h5><p>foo</p>
+               <h6 name="six">bar</h6><p>foo</p>`;
+
+      // When
+      actual = AlgoliaHTMLExtractor.run(input);
+
+      // Then
+      expect(actual[0].customRanking.heading).to.eq(90);
+      expect(actual[1].customRanking.heading).to.eq(80);
+      expect(actual[2].customRanking.heading).to.eq(70);
+      expect(actual[3].customRanking.heading).to.eq(60);
+      expect(actual[4].customRanking.heading).to.eq(50);
+      expect(actual[5].customRanking.heading).to.eq(40);
     });
   });
 });
