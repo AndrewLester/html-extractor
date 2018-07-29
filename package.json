@@ -1,6 +1,6 @@
 {
   "name": "algolia-html-extractor",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Convert HTML content into Algolia records with Node",
   "main": "index.js",
   "directories": {
