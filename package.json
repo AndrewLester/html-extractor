@@ -16,13 +16,16 @@
     "url": "git+https://github.com/stonecircle/html-extractor.git"
   },
   "keywords": [],
-  "contributors": [{
-    "name" : "Tim Carry",
-    "email" : "tim@pixelastic.com"
-  }, {
-    "name" : "Chris Manson",
-    "email" : "chris@stonecircle.io"
-  }],
+  "contributors": [
+    {
+      "name": "Tim Carry",
+      "email": "tim@pixelastic.com"
+    },
+    {
+      "name": "Chris Manson",
+      "email": "chris@stonecircle.io"
+    }
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/stonecircle/html-extractor/issues"
