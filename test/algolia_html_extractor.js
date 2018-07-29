@@ -419,14 +419,14 @@ describe('AlgoliaHTMLExtractor', function() {
 
   describe('heading_weight', function() {
     it('should have 100 if no heading', function() {
-      // # Given
-      // input = '<p>foo</p>'
-      //
-      // # When
-      // actual = AlgoliaHTMLExtractor.run(input)
-      //
-      // # Then
-      // expect(actual[0][:custom_ranking][:heading]).to eq 100
+      // Given
+      input = '<p>foo</p>';
+
+      // When
+      actual = AlgoliaHTMLExtractor.run(input);
+
+      // Then
+      expect(actual[0].customRanking.heading).to.eq(100);
     });
 
     it('should have decreasing value under small headers', function() {
