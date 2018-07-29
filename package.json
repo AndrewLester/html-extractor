@@ -1,21 +1,28 @@
 {
-  "name": "html-extractor-node",
+  "name": "algolia-html-extractor",
   "version": "1.0.0",
-  "description": "algolia html-extractor for NodeJS",
+  "description": "Convert HTML content into Algolia records with Node",
   "main": "index.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
     "test": "mocha",
-    "test-watch": "npm test -- -w"
+    "test-watch": "npm test -- -w",
+    "lint:js": "eslint ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stonecircle/html-extractor.git"
   },
   "keywords": [],
-  "author": "",
+  "contributors": [{
+    "name" : "Tim Carry",
+    "email" : "tim@pixelastic.com"
+  }, {
+    "name" : "Chris Manson",
+    "email" : "chris@stonecircle.io"
+  }],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/stonecircle/html-extractor/issues"
