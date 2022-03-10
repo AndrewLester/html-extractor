@@ -170,4 +170,4 @@ recommended for TDD.
 
 ## History
 
-This module is a direct one-for-one port of the Ruby Gem (`algolia_html_extractor`)[https://github.com/algolia/html-extractor] and was probably only possible because of the great test coverage on the Ruby code 😂 Thanks Tim 🎉
+This module is a direct one-for-one port of the Ruby Gem [`algolia_html_extractor`](https://github.com/algolia/html-extractor) and was probably only possible because of the great test coverage on the Ruby code 😂 Thanks Tim 🎉
