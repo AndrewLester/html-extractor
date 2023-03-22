@@ -1,46 +1,46 @@
 {
-  "name": "algolia-html-extractor",
-  "version": "0.0.1",
-  "description": "Convert HTML content into Algolia records with Node",
-  "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
-  "scripts": {
-    "test": "mocha",
-    "test-watch": "npm test -- -w",
-    "lint:js": "eslint ."
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/stonecircle/html-extractor.git"
-  },
-  "keywords": [],
-  "contributors": [
-    {
-      "name": "Tim Carry",
-      "email": "tim@pixelastic.com"
+    "name": "algolia-html-extractor",
+    "version": "0.0.1",
+    "description": "Convert HTML content into Algolia records with Node",
+    "main": "index.js",
+    "directories": {
+        "lib": "lib"
     },
-    {
-      "name": "Chris Manson",
-      "email": "chris@stonecircle.io"
-    }
-  ],
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/stonecircle/html-extractor/issues"
-  },
-  "homepage": "https://github.com/stonecircle/html-extractor#readme",
-  "devDependencies": {
-    "chai": "^4.1.2",
-    "eslint": "^5.2.0",
-    "eslint-config-airbnb-base": "^13.0.0",
-    "eslint-plugin-import": "^2.13.0",
-    "mocha": "^5.2.0",
-    "np": "^3.0.4"
-  },
-  "dependencies": {
-    "jsdom": "^11.12.0",
-    "object.omit": "^3.0.0"
-  }
+    "scripts": {
+        "test": "mocha",
+        "test-watch": "npm test -- -w",
+        "lint:js": "eslint ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/stonecircle/html-extractor.git"
+    },
+    "keywords": [],
+    "contributors": [
+        {
+            "name": "Tim Carry",
+            "email": "tim@pixelastic.com"
+        },
+        {
+            "name": "Chris Manson",
+            "email": "chris@stonecircle.io"
+        }
+    ],
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/stonecircle/html-extractor/issues"
+    },
+    "homepage": "https://github.com/stonecircle/html-extractor#readme",
+    "devDependencies": {
+        "chai": "^4.1.2",
+        "eslint": "^5.2.0",
+        "eslint-config-airbnb-base": "^13.0.0",
+        "eslint-plugin-import": "^2.13.0",
+        "mocha": "^5.2.0",
+        "np": "^3.0.4"
+    },
+    "dependencies": {
+        "jsdom": "^21.0.0"
+    },
+    "type": "module"
 }

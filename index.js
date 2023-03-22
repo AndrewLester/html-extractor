@@ -1,3 +1,2 @@
-const AlgoliaHTMLExtractor = require('./lib/algoliaHtmlExtractor');
-
-module.exports = AlgoliaHTMLExtractor;
+import AlgoliaHTMLExtractor from './lib/algoliaHtmlExtractor';
+export default AlgoliaHTMLExtractor;
