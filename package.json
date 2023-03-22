@@ -39,8 +39,8 @@
         "mocha": "^5.2.0",
         "np": "^3.0.4"
     },
+    "type": "module",
     "dependencies": {
-        "jsdom": "^21.0.0"
-    },
-    "type": "module"
+        "htmlparser2": "^8.0.1"
+    }
 }
