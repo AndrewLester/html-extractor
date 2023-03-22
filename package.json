@@ -41,6 +41,7 @@
     },
     "type": "module",
     "dependencies": {
+        "domelementtype": "^2.3.0",
         "domutils": "^3.0.1",
         "htmlparser2": "^8.0.1"
     }
